@@ -61,25 +61,23 @@
 
       \part{}
       \begin{solution}
-        Let \(G_{\text{right}}\) denote the amount of gas consumed by the car as estimated by the right sum and let \(f(v)\) be the efficiency of the car given a speed \(v\).
+        Let \(G_{\text{right}}\) denote the amount of gas consumed by the car as estimated by and let \(g(v(t))\) be the fuel gas efficiency of the car given a speed \(v(t)\).
 
-        Note that the right sum isn't as straightforward now in terms of units. Multiplying \(\Delta v\) by any given \(f(v)\) results in a quantity with the units \unit{\litre\per100\hour}, which will be the average gas consumption with respect to time. Since we're looking for amount of gas consumed over an hour, we should factor this into the calculation.
+        Unit analysis: We want \unit{\litre} from the distances (speed \(\times\) time) in part~(\ref{part@25@1}) and the efficiency from the table.
+        \begin{equation*}
+          \underbrace{\cancel{\unit{\hour}}}_{t} \times \underbrace{\frac{\cancel{\unit{\km}}}{\cancel{\unit{\hour}}}}_{v(t)} \times \underbrace{\frac{\unit{\litre}}{\qty{100}{\cancel\km}}}_{g(v(t))} = \frac{1}{100} \unit{\litre}
+        \end{equation*}
+        So then the terms we're summing over are \(f(t_{i}) = v(t_{i})g(v(t_{i}))\), which implies that the quantity that we're looking for is
         \begin{align*}
-          G_{\text{right}} &= (\qty{1}{\hour}) \cdot RIGHT(5)                                                    \\
-                           &= (\qty{1}{\hour}) \Delta v \sum_{i=1}^{5} f(v_{i})\numberthis\label{eq:right-sum-b}
+          G_{\text{right}} &= RIGHT(5)                                                                      \\
+                           &= \Delta t \sum_{i=1}^{5} f(t_{i})                                              \\
+                           &= \Delta t \sum_{i=1}^{5} v(t_{i})g(v(t_{i})).\numberthis\label{eq:right-sum-b}
         \end{align*}
-        The width of each subinterval is \qty{20}{\km\per\hour}:
+        With \(\Delta t\) as before, using~\eqref{eq:right-sum-b} to calculate the estimated gas consumed yields
         \begin{align*}
-          \Delta v &= \frac{b-a}{n}          \\
-                   &= \frac{110-10}{5}       \\
-                   &= \qty{20}{\km\per\hour}
-        \end{align*}
-        Using~\eqref{eq:right-sum-b} to calculate the estimated gas consumed:
-        \begin{align*}
-          G_{\text{right}} &= (\qty{1}{\hour}) \Delta v \sum_{i=1}^{5} f(v_{i})                                         \\
-                           &= (\qty{1}{\hour}) (\qty{20}{\km\per\hour}) (15 + 10 + 7 + 8 + 9) (\unit{\litre\per100\km}) \\
-                           &= (\qty{20}{\km}) (\qty{49}{\litre\per100\km})                                              \\
-          \alignedbox{     &= \qty{9.8}{\litre}}
+          G_{\text{right}} &= \Delta t \sum_{i=1}^{5} v(t_{i})g(v(t_{i}))                                                                                                    \\
+                           &= 0.2 \biggl(30 \cdot \frac{15}{100} + 30 \cdot \frac{15}{100} + 70 \cdot \frac{7}{100} + 90 \cdot \frac{8}{100} + 90 \cdot \frac{8}{100}\biggr) \\
+          \alignedbox{     &= \qty{5.66}{\litre}}
         \end{align*}
       \end{solution}
     \end{parts}
@@ -139,7 +137,7 @@
           \end{tikzpicture}
           \caption{A \sout{sketch} graph of the trapezoidal rule for approximating the integral of \(\cos(x)\) from \(0\) to \(\frac{\pi}{2}\).}\label{fig:trapezoidal-rule-cos}
         \end{answerfigure}
-        From Figure~\ref{fig:trapezoidal-rule-cos}, we can deduce that the estimate from part~(\ref{part@26@1}) is an underestimate of the exact integral value.
+        From Figure~\ref{fig:trapezoidal-rule-cos}, we can deduce that the estimate from part~(\ref{part@26@1}) is an \textbf{underestimate} of the exact integral value.
       \end{solution}
     \end{parts}
   \end{questions}
