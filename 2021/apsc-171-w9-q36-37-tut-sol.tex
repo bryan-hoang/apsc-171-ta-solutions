@@ -36,7 +36,7 @@
         \caption{Diagram of the conical portion of the water tank}
         \label{fig:conical-diagram}
       \end{answerfigure}
-      Let \(y\) denote the height of any given ``drop'' of water in the tank, where \(y=\qty{0}{\m}\) is the base of the tank and \(y=5+7=\qty{12}{\m}\) is the top of the tank. Then the height of water in the conical portion of the tank is represented by \(y-7\) for \(y \in [7,12]\).
+      Let \(y\) denote the height of any given ``drop'' of water in the tank, where \(y={\qty{0}{\m}}\) \textit{is the base of the tank} and \(y=5+7=\qty{12}{\m}\) is the top of the tank. Then \(y-7\) for \(y \in [7,12]\) represents the height of water in the conical portion of the tank.
 
       Let \(W_{S}(y)\) denote the total amount of work done by letting a slice water of thickness \(\Delta y\) in the tank at height \(y\) drain and let \(W_{T}\) be the integral we want to construct. Then
       \begin{align*}
@@ -49,16 +49,19 @@
         r                    &= \frac{2}{5} (y-7)                                        \\
         \Rightarrow W_{S}(y) &= \rho \pi \biggl(\frac{2}{5}(y-7)\biggr)^{2} g y \Delta y \\
                              &= \frac{4}{25} \rho g \pi y (y-7)^{2} \Delta y             \\
-                             &= 1568 \pi y(y - 7)^{2} \Delta y                           \\
+                             &= 1568 \pi y(y - 7)^{2} \Delta y
         \intertext{\(\therefore\) the total amount of work done can be represented as}
-        W_{T}                &= \int W_{S} (y) \dl3y                                     \\
-        \alignedbox{         &= 1568 \pi \int_{7}^{12} y(y - 7)^{2} \dl3y}
+        W_{T}                &= \sum W_{S}(y)                                            \\
+        \alignedbox{         &= 1568 \pi \int_{9}^{12} y(y - 7)^{2} \dl3y}
       \end{align*}
+      \begin{note}
+        If we defined \(y\) differently, then the integrand (\(d\) and \(r\) as functions of \(y\)) and the bounds of the integral would change. But the overall value of the integral would remain unchanged.
+      \end{note}
     \end{solution}
 
     \question{}
     \begin{solution}
-      The integrand is a rational function that can undergo partial fraction decomposition to simplify the evaluation of the integral, since \(\deg(4x-2) < \deg(x^{2}-2x+1)\).
+      The integrand is a rational function that can undergo partial fraction decomposition to simplify the evaluation of the integral, since \(\deg(4x-2) < \deg(x^{2}-2x+1)\).\ i.e., the integrand is a proper rational function.
 
       Let \(I\) denote the value of the indefinite integral. Then using partial fraction decomposition yields
       \begin{align*}
@@ -66,7 +69,7 @@
                                            &= 2 \int \frac{2x-1}{(x-1)^{2}} \dl3{x}                      \\
                                            &= 2 \int \frac{c_{1}}{x-1} + \frac{c_{2}}{(x-1)^{2}} \dl3{x} \\
         \Rightarrow \frac{2x-1}{(x-1)^{2}} &= \frac{c_{1}}{x-1} + \frac{c_{2}}{(x-1)^{2}}                \\
-        2x-1                               &= c_{1}(x-1) + c_{2}                                         \\
+        2x-1                               &= c_{1}(x-1) + c_{2}\numberthis\label{eq:constants}          \\
         2x-1                               &= c_{1}x - c_{1} + c_{2}                                     \\
         \Rightarrow                        &\begin{cases}
                                               2x = c_{1}x \\
@@ -75,7 +78,10 @@
         \Rightarrow                        &\begin{cases}
                                               c_{1} = 2 \\
                                               c_{2} = 1
-                                            \end{cases}                                                 \\
+                                            \end{cases}
+        \intertext{\begin{note}
+                       The constants can also be solved for by substituting in certain values of \(x\) into~\eqref{eq:constants}.
+                     \end{note}}
         \Rightarrow I                      &= 2 \int \frac{2}{x-1} + \frac{1}{(x-1)^{2}} \dl3{x}         \\
         \alignedbox{                       &= 2(2\ln\abs{x-1} - (x-1)^{-1}) + C}.
       \end{align*}
